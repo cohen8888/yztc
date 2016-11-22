@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>不想绑定事件，可以使用实验性的方法；属性初始化</title>
+	<script src="../lib/react.js"></script>
+	<script src="../lib/react-dom.js"></script>
+	<script src="../lib/browser.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		class LoggingButton extends React.Component {
+		  // This syntax ensures `this` is bound within handleClick.
+		  // Warning: this is *experimental* syntax.
+		  handleClick = () => {
+		    console.log('this is:', this);
+		  }
+
+		  render() {
+		    return (
+		      <button onClick={(e) => this.handleClick(e)}>
+		        Click me
+		      </button>
+		    );
+		  }
+		}
+		ReactDOM.render(
+			<LogginButton />,
+			document.getElementById("root")
+		);
+
+	</script>
+</body>
+</html>

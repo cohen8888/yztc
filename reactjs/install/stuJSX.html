@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>认识JSX</title>
+	<style>
+		.greeting {
+			width:300px;
+		}
+	</style>
+	<script src="../lib/react.js"></script>
+	<script src="../lib/react-dom.js"></script>
+	<script src="../lib/browser.js"></script>
+</head>
+<body>
+	<div id="root1"></div>
+	<div id="root2"></div>
+	<script type="text/babel">
+		const element = (
+		  <h1 className="greeting">
+		    Hello, world!
+		  </h1>
+		);
+		const element1 = React.createElement('h1',
+			{className:'greeting'},
+			'Hello, world1!'
+		);
+		ReactDOM.render(
+			element1,
+			document.getElementById("root1")
+		);
+		ReactDOM.render(
+			element,
+			document.getElementById("root2")
+		);
+	</script>
+</body>
+</html>

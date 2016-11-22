@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>处理Reactjs中的事件</title>
+	<script src="../lib/react.js"></script>
+	<script src="../lib/react-dom.js"></script>
+	<script src="../lib/browser.js"></script>
+</head>
+<body>
+
+	<div id="root"></div>
+	<script type="text/babel">
+		/*
+		function createButton(){
+			function clickMe(e){
+				e.preventDefault();
+				console.log("点我");
+			}
+			
+			return <button onClick={clickMe}>
+					点我啊
+				</button>;
+		}
+
+		ReactDOM.render(
+		createButton(),
+		document.getElementById("root"));
+		*/
+		
+		class Toggle extends React.Component{
+			constructor(props){
+				super(props);
+				this.state = {isToggleOn:true};
+				this.handleClick = this.handleClick.bind(this);
+			}
+
+			handleClick(){
+				this.setState(prevState => ({
+					isToggleOn: !prevState.isToggleOn
+				}));
+			}
+			render(){
+				return (
+					<button onClick={this.handleClick}>
+						{this.state.isToggleOn ? 'ON' : 'OFF'}
+					</button>
+				);
+			}
+		}
+
+		ReactDOM.render(
+		<Toggle />,
+		document.getElementById("root"));
+
+	</script>
+</body>
+</html>
